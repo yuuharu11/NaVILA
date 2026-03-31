@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 
 # This is required to activate conda environment
+# Conda activation scripts can reference unset backup vars; temporarily disable nounset.
+set +u
 eval "$(conda shell.bash hook)"
+set -u
 
 CONDA_ENV=${1:-""}
 if [ -n "$CONDA_ENV" ]; then
-    conda create -n $CONDA_ENV python=3.10 -y
-    conda activate $CONDA_ENV
+    conda create -n "$CONDA_ENV" python=3.10 -y
+    set +u
+    conda activate "$CONDA_ENV"
+    set -u
 else
     echo "Skipping conda environment creation. Make sure you have the correct environment activated."
 fi
