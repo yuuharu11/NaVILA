@@ -27,9 +27,13 @@ dist
 *.log
 *.log.*
 
+# Models
+checkpoints/
+
 # Data
 !**/alpaca-data-conversation.json
 data/
+NaVILA-Dataset/
 
 # Editor
 .idea
