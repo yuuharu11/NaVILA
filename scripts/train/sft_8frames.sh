@@ -1,8 +1,17 @@
 #!/bin/bash
+cd /work
+export PYTHONPATH=$PYTHONPATH:.
+export PATH="/root/miniconda3/envs/navila/bin:$PATH"
+
+export MASTER_ADDR=localhost
+export MASTER_PORT=29500
+export NNODE=1
+export CURRENT_RANK=0
+export GPUS_PER_NODE=4
 
 OUTPUT="./checkpoints/navila-8b-8f-sft"
 
-torchrun --nnodes=$n_node --nproc_per_node=$GPUS_PER_NODE --master_port=$MASTER_PORT \
+/root/miniconda3/envs/navila/bin/torchrun --nnodes=$NNODE --nproc_per_node=$GPUS_PER_NODE --master_port=$MASTER_PORT \
     --master_addr $MASTER_ADDR --node_rank=$CURRENT_RANK \
     llava/train/train_mem.py \
     --longvila_sampler True \
@@ -10,7 +19,7 @@ torchrun --nnodes=$n_node --nproc_per_node=$GPUS_PER_NODE --master_port=$MASTER_
     --model_name_or_path a8cheng/navila-siglip-llama3-8b-v1.5-pretrain \
     --version llama_3 \
     --seed 10 \
-    --data_mixture r2r+rxr+envdrop+human+scanqa+video_chatgpt+sharegpt_video+sharegpt4v_sft \
+    --data_mixture r2r+rxr+human+scanqa \
     --vision_tower google/siglip-so400m-patch14-384 \
     --mm_vision_select_feature cls_patch \
     --mm_projector mlp_downsample \
@@ -25,7 +34,7 @@ torchrun --nnodes=$n_node --nproc_per_node=$GPUS_PER_NODE --master_port=$MASTER_
     --bf16 True \
     --output_dir $OUTPUT \
     --num_train_epochs 1 \
-    --per_device_train_batch_size 10 \
+    --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 2 \
     --do_eval False \
     --save_strategy "steps" \
