@@ -1,4 +1,5 @@
 import multiprocessing.dummy as mp
+import os
 import re
 import subprocess
 from os import listdir, makedirs
@@ -50,5 +51,17 @@ def extract_all_frames():
     p.join()
 
 
+def remove_empty_dirs(root_dir):
+    # Remove empty directories bottom-up so partially extracted videos can be retried cleanly.
+    for dirpath, dirnames, filenames in os.walk(root_dir, topdown=False):
+        if not dirnames and not filenames:
+            try:
+                os.rmdir(dirpath)
+                print(f"removed empty directory: {dirpath}")
+            except OSError:
+                pass
+
+
 if __name__ == "__main__":
     extract_all_frames()
+    remove_empty_dirs("/work/NaVILA-Dataset/Human/raw_frames")
