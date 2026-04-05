@@ -53,39 +53,38 @@ def add_dataset(dataset):
 
 
 def register_datasets_mixtures():
+    # video_chatgpt = Dataset(
+    #     dataset_name="video_chatgpt",
+    #     dataset_type="torch",
+    #     data_path="/work/annotations.json",
+    #     image_path="/work/videos",
+    # )
+    # add_dataset(video_chatgpt)
+    #
+    # sharegpt_video = Dataset(
+    #     dataset_name="sharegpt_video",
+    #     dataset_type="torch",
+    #     data_path="/work/annotations.json",
+    #     image_path="/work/videos",
+    # )
+    # add_dataset(sharegpt_video)
+    #
+    # sharegpt4v_sft = Dataset(
+    #     dataset_name="sharegpt4v_sft",
+    #     dataset_type="torch",
+    #     data_path="/work/annotations.json",
+    #     image_path="/work/videos",
+    # )
+    # add_dataset(sharegpt4v_sft)
 
-    video_chatgpt = Dataset(
-        dataset_name="video_chatgpt",
-        dataset_type="torch",
-        data_path="/work/annotations.json",
-        image_path="/work/videos",
-    )
-    add_dataset(video_chatgpt)
-
-    sharegpt_video = Dataset(
-        dataset_name="sharegpt_video",
-        dataset_type="torch",
-        data_path="/work/annotations.json",
-        image_path="/work/videos",
-    )
-    add_dataset(sharegpt_video)
-
-    sharegpt4v_sft = Dataset(
-        dataset_name="sharegpt4v_sft",
-        dataset_type="torch",
-        data_path="/work/annotations.json",
-        image_path="/work/videos",
-    )
-    add_dataset(sharegpt4v_sft)
-
-    envdrop = Dataset(
-        dataset_name="envdrop",
-        dataset_type="envdrop",
-        data_path="/work/NaVILA-Dataset/EnvDrop/annotations.json",
-        image_path="/work/NaVILA-Dataset/EnvDrop/videos",
-        description="VLN_CE Envdrop.",
-    )
-    add_dataset(envdrop)
+    # envdrop = Dataset(
+    #    dataset_name="envdrop",
+    #    dataset_type="envdrop",
+    #    data_path="/work/NaVILA-Dataset/EnvDrop/annotations.json",
+    #    image_path="/work/NaVILA-Dataset/EnvDrop/videos",
+    #    description="VLN_CE Envdrop.",
+    # )
+    # add_dataset(envdrop)
 
     scanqa = Dataset(
         dataset_name="scanqa",
