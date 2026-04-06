@@ -34,10 +34,15 @@ checkpoints/
 !**/alpaca-data-conversation.json
 data/
 NaVILA-Dataset/
+Downloads/
 
 # Editor
 .idea
 *.swp
+
+# Environment
+isaacsim/
+habitat-lab/
 
 # Other
 .DS_Store
